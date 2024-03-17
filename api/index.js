@@ -67,9 +67,9 @@ app.post('/sheets-data', async (req, res) => {
 // get data for a specific team
 app.get('/team/:id', async (req, res) => {
   let data = await sheetData();
-  const teamId = req.params.id;
-  if(teamId.toLowerCase() == "avg"){
-    teamId = teamId.toUpperCase();
+  let teamId = req.params.id;
+  if(teamId.toLowerCase() == "avg" || teamId.toLowerCase() == "average"){
+    teamId = "AVG";
   } else {
     teamId = parseInt(teamId);
   }
