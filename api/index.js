@@ -69,7 +69,7 @@ app.get('/teams/:id', async (req, res) => {
   let data = await sheetData();
   const teamId = req.params.id;
   console.log(teamId)
-  const teamData = data.find(team => team.Team === teamId);
+  const teamData = data.find(team => team.Team === parseInt(teamId));
   console.log(teamData);
   if (teamData) {
     res.status(200).json(teamData);
