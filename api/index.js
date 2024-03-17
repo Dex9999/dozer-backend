@@ -96,7 +96,7 @@ app.get('/all-teams', async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-  res.status(200).json({ message: 'Welcome to the API'});
+  res.status(200).json({ message: 'Endpoints include: /teams/:teamId, /top-teams, /all-teams'});
 });
 
 const PORT = process.env.PORT || 3333;
