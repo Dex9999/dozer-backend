@@ -65,12 +65,10 @@ app.post('/sheets-data', async (req, res) => {
 });
 
 // get data for a specific team
-app.get('/teams/:id', async (req, res) => {
+app.get('/team/:id', async (req, res) => {
   let data = await sheetData();
   const teamId = req.params.id;
-  console.log(teamId)
   const teamData = data.find(team => team.Team === parseInt(teamId));
-  console.log(teamData);
   if (teamData) {
     res.status(200).json(teamData);
   } else {
@@ -98,10 +96,10 @@ app.get('/all-teams', async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-  res.status(200).json({ message: 'Endpoints include: /teams/:teamId, /top-teams, /all-teams'});
+  res.status(200).json({ message: 'Endpoints include: /team/:teamId, /top-teams, /all-teams'});
 });
 
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
