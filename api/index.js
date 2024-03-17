@@ -69,6 +69,7 @@ app.get('/teams/:teamId', async (req, res) => {
   let data = await sheetData();
   const teamId = req.params.teamId;
   const teamData = data.find(team => team.Team === teamId);
+  console.log(teamData
   if (teamData) {
     res.status(200).json(teamData);
   } else {
@@ -82,7 +83,7 @@ app.get('/top-teams', async (req, res) => {
   const category = req.query.category;
   const topCount = req.query.count || 5; // default to top 5 teams
   if (!category) {
-    return res.status(400).send('Category parameter is required. Try ?category="Speaker"');
+    return res.status(400).send('Category parameter is required. Try ?category=Speaker');
   }
   const sortedData = [...data].sort((a, b) => b[category] - a[category]);
   const topTeams = sortedData.slice(0, topCount);
