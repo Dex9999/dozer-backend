@@ -65,9 +65,10 @@ app.post('/sheets-data', async (req, res) => {
 });
 
 // get data for a specific team
-app.get('/teams/:teamId', async (req, res) => {
+app.get('/teams/:id', async (req, res) => {
   let data = await sheetData();
-  const teamId = req.params.teamId;
+  const teamId = req.params.id;
+  console.log(teamId)
   const teamData = data.find(team => team.Team === teamId);
   console.log(teamData);
   if (teamData) {
