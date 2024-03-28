@@ -6,28 +6,28 @@ app.use(express.json());
 
 dotenv.config();
 
-async function updateGist(data) {
-  try {
-    const gistId = process.env.GIST_ID; 
-    const gistUrl = `https://api.github.com/gists/${gistId}`;
-    const response = await axios.patch(gistUrl, {
-      files: {
-        'data.json': {
-          content: JSON.stringify(data)
-        }
-      }
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
-      }
-    });
-    return response.status === 200;
-  } catch (error) {
-    console.error('Error updating GitHub Gist:', error);
-    return false;
-  }
-}
+// async function updateGist(data) {
+//   try {
+//     const gistId = process.env.GIST_ID; 
+//     const gistUrl = `https://api.github.com/gists/${gistId}`;
+//     const response = await axios.patch(gistUrl, {
+//       files: {
+//         'data.json': {
+//           content: JSON.stringify(data)
+//         }
+//       }
+//     }, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
+//       }
+//     });
+//     return response.status === 200;
+//   } catch (error) {
+//     console.error('Error updating GitHub Gist:', error);
+//     return false;
+//   }
+// }
 
 async function sheetData() {
   try {
@@ -40,7 +40,7 @@ async function sheetData() {
         'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
       }
     });
-    return JSON.parse(response.data.files['data.json'].content);
+    return JSON.parse(response.data.files['humber.json'].content);
   } catch (error) {
     console.error('Error fetching data from GitHub Gist:', error);
     return [];
@@ -48,21 +48,21 @@ async function sheetData() {
 }
 
 // recieve data from apps script
-app.post('/sheets-data', async (req, res) => {
-  try {
-    const data = req.body;
+// app.post('/sheets-data', async (req, res) => {
+//   try {
+//     const data = req.body;
     
-    const updateSuccess = await updateGist(data);
-    if (updateSuccess) {
-      res.status(200).send('Data received and updated in GitHub Gist successfully.');
-    } else {
-      res.status(500).send('Error updating data in GitHub Gist.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
+//     const updateSuccess = await updateGist(data);
+//     if (updateSuccess) {
+//       res.status(200).send('Data received and updated in GitHub Gist successfully.');
+//     } else {
+//       res.status(500).send('Error updating data in GitHub Gist.');
+//     }
+//   } catch (error) {
+//     console.error('Error:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
 
 // get data for a specific team
 app.get('/team/:id', async (req, res) => {
