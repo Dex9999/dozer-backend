@@ -40,7 +40,7 @@ async function sheetData() {
         'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
       }
     });
-    return JSON.parse(response.data.files['humber.json'].content);
+    return JSON.parse(response.data.files['mcmaster.json'].content);
   } catch (error) {
     console.error('Error fetching data from GitHub Gist:', error);
     return [];
