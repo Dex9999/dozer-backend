@@ -84,11 +84,13 @@ app.get('/team/:id', async (req, res) => {
 // get top teams sorted by a query category
 app.get('/top-teams', async (req, res) => {
   let data = await sheetData();
+  data = data.filter(entry => entry.Team !== 'AVG'); // don't include avg lol
   const category = req.query.category;
   const topCount = req.query.count || 5; // default to top 5 teams
   if (!category) {
     return res.status(400).send('Category parameter is required. Try ?category=Speaker');
   }
+  
   const sortedData = [...data].sort((a, b) => b[category] - a[category]);
   const topTeams = sortedData.slice(0, topCount);
   res.status(200).json(topTeams);
