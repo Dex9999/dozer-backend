@@ -3,4 +3,10 @@
       "includeFiles": "/images"
     }
   },
+    "builds": [
+        {
+            "src": "images/**",
+            "use": "@vercel/static"
+        }
+    ],
 }
