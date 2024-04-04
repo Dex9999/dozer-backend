@@ -71,6 +71,7 @@ app.post('/webhook', async (req,res)=>{
   } catch (err){
     console.log(err);
   }
+  res.status(200).send('Yay!);
 });
 
 // get data for a specific team
