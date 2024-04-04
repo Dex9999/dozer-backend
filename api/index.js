@@ -167,23 +167,23 @@ async function match(data) {
   // rp
   let redImages = [];
   let redCount = 0;
-  console.log(await fs.readFileSync(__dirname 
+  console.log(await fs.readFileSync(process.cwd() 
 + "/"));
 
   if (match.score_breakdown.red.melodyBonusAchieved) {
-    redImages.push(fs.readFileSync(__dirname 
+    redImages.push(fs.readFileSync(process.cwd() 
 + 'images/redmelody.png'));
     redCount++;
   }
 
   if (match.score_breakdown.red.ensembleBonusAchieved) {
-    redImages.push(fs.readFileSync(__dirname 
+    redImages.push(fs.readFileSync(process.cwd() 
 + 'images/redensemble.png'));
     redCount++;
   }
 
   for (let i = 0; i < match.score_breakdown.red.rp - redCount; i++) {
-    redImages.push(fs.readFileSync(__dirname 
+    redImages.push(fs.readFileSync(process.cwd() 
 + 'images/redtrophy.png'));
   }
 
@@ -191,19 +191,19 @@ async function match(data) {
   let blueCount = 0;
 
   if (match.score_breakdown.blue.melodyBonusAchieved) {
-    blueImages.push(fs.readFileSync(__dirname 
+    blueImages.push(fs.readFileSync(process.cwd() 
 + 'images/bluemelody.png'));
     blueCount++;
   }
 
   if (match.score_breakdown.blue.ensembleBonusAchieved) {
-    blueImages.push(fs.readFileSync(__dirname 
+    blueImages.push(fs.readFileSync(process.cwd() 
 + 'images/blueensemble.png'));
     blueCount++;
   }
 
   for (let i = 0; i < match.score_breakdown.blue.rp - blueCount; i++) {
-    blueImages.push(fs.readFileSync(__dirname 
+    blueImages.push(fs.readFileSync(process.cwd() 
 + 'images/bluetrophy.png'));
   }
 
