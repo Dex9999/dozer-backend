@@ -167,6 +167,8 @@ async function match(data) {
   // rp
   let redImages = [];
   let redCount = 0;
+  console.log(fs.readFileSync(__dirname 
++ "/"));
 
   if (match.score_breakdown.red.melodyBonusAchieved) {
     redImages.push('../images/redmelody.png');
