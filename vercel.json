@@ -8,5 +8,5 @@
             "src": "images/**",
             "use": "@vercel/static"
         }
-    ],
+    ]
 }
