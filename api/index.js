@@ -129,7 +129,7 @@ async function match(data) {
   let webhookClient = new WebhookClient({ id: process.env.webhookId, token: process.env.webookToken });
   let match = data.match;
   let msg;
-  msg = "```ansi\n\u001b[2;31m\u001b[0m\u001b[1;2m\u001b[1;31m" + match.alliances.red.team_keys.map(team => team.slice(3)).join(" ") + "\u001b[0m\u001b[1;2m\u001b[0;2m\u001b[0;2m\u001b[1;2m vs\u001b[0m\u001b[0m\u001b[0m\u001b[0m \u001b[1;34m" + match.alliances.blue.team_keys.map(team => team.slice(3)).join(" ") + "\u001b[0m\u001b[0m\u001b[2;34m\u001b[0m\n```";
+  msg = "```ansi\n\u001b[2;31m\u001b[0m\u001b[1;2m\u001b[1;31m" + match.alliances.red.teams.map(team => team.slice(3)).join(" ") + "\u001b[0m\u001b[1;2m\u001b[0;2m\u001b[0;2m\u001b[1;2m vs\u001b[0m\u001b[0m\u001b[0m\u001b[0m \u001b[1;34m" + match.alliances.blue.teams.map(team => team.slice(3)).join(" ") + "\u001b[0m\u001b[0m\u001b[2;34m\u001b[0m\n```";
   if (match.score_breakdown.blue.autoAmpNoteCount > 0 || match.score_breakdown.red.autoAmpNoteCount > 0) {
     msg += `Auto Amp Note Points 🤮 (R-B): ${match.score_breakdown.red.autoAmpNotePoints} - ${match.score_breakdown.blue.autoAmpNotePoints}\n`;
   }
