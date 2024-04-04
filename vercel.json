@@ -1,8 +1,16 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }], "functions": {
-    "api/index.js": {
-      "includeFiles": "/images"
-    }
-  },
+{
+    "version": 2,
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/api"
+        }
+    ],
+    "functions": {
+        "api/index.js": {
+            "includeFiles": "/images"
+        }
+    },
     "builds": [
         {
             "src": "images/**",
