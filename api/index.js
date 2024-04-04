@@ -5,7 +5,7 @@ const app = express();
 const Canvas = require('@napi-rs/canvas');
 const { EmbedBuilder, WebhookClient } = require('discord.js');
 
-app.use(express.static(path.join(__dirname + '/images')));
+app.use(express.static(process.cwd() + '/images'));
 
 app.use(express.json());
 
