@@ -5,10 +5,10 @@ const app = express();
 const Canvas = require('@napi-rs/canvas');
 const { EmbedBuilder, WebhookClient } = require('discord.js');
 
+//now it'll update
 app.use(express.static(process.cwd() + '/images'));
 
 app.use(express.json());
-
 dotenv.config();
 
 // async function updateGist(data) {
