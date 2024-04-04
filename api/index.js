@@ -155,14 +155,11 @@ async function match(data) {
   const ctx = canvas.getContext('2d');
   let background;
   if (match.winning_alliance == "red") {
-    background = await Canvas.loadImage(process.cwd() 
-+'images/red.png');
+    background = await Canvas.loadImage('images/red.png');
   } else if (match.winning_alliance == "blue") {
-    background = await Canvas.loadImage(process.cwd() 
-+'images/blue.png');
+    background = await Canvas.loadImage('images/blue.png');
   } else {
-    background = await Canvas.loadImage(process.cwd() 
-+'images/redblue.png');
+    background = await Canvas.loadImage('images/redblue.png');
   }
 
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
@@ -176,40 +173,34 @@ async function match(data) {
 + "/");
 
   if (match.score_breakdown.red.melodyBonusAchieved) {
-    redImages.push(process.cwd() 
-+ 'images/redmelody.png');
+    redImages.push('images/redmelody.png');
     redCount++;
   }
 
   if (match.score_breakdown.red.ensembleBonusAchieved) {
-    redImages.push(process.cwd() 
-+ 'images/redensemble.png');
+    redImages.push('images/redensemble.png');
     redCount++;
   }
 
   for (let i = 0; i < match.score_breakdown.red.rp - redCount; i++) {
-    redImages.push(process.cwd() 
-+ 'images/redtrophy.png');
+    redImages.push('images/redtrophy.png');
   }
 
   let blueImages = [];
   let blueCount = 0;
 
   if (match.score_breakdown.blue.melodyBonusAchieved) {
-    blueImages.push(process.cwd() 
-+ 'images/bluemelody.png');
+    blueImages.push('images/bluemelody.png');
     blueCount++;
   }
 
   if (match.score_breakdown.blue.ensembleBonusAchieved) {
-    blueImages.push(process.cwd() 
-+ 'images/blueensemble.png');
+    blueImages.push('images/blueensemble.png');
     blueCount++;
   }
 
   for (let i = 0; i < match.score_breakdown.blue.rp - blueCount; i++) {
-    blueImages.push(process.cwd() 
-+ 'images/bluetrophy.png');
+    blueImages.push('images/bluetrophy.png');
   }
 
   for (let i = 0; i < blueImages.length; i++) {
