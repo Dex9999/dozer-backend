@@ -71,7 +71,7 @@ app.post('/webhook', async (req,res)=>{
   } catch (err){
     console.log(err);
   }
-}
+});
 
 // get data for a specific team
 app.get('/team/:id', async (req, res) => {
