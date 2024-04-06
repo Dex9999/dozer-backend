@@ -94,7 +94,11 @@ app.get('/team/:id', async (req, res) => {
   } else {
     teamId = parseInt(teamId);
   }
+  console.log(data)
+  console.log(teamId)
+  
   const teamData = data.find(team => team.Team === teamId);
+  console.log(teamData)
   if (teamData) {
     res.status(200).json(teamData);
   } else {
