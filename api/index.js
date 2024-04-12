@@ -79,8 +79,9 @@ app.get('/image/:team', async (req, res) => {
       'X-TBA-Auth-Key': process.env.TBA
     }
   };
-  let data = await axios.get(`https://www.thebluealliance.com/api/v3/team/frc${req.params.team}/media/${dayjs().year()}`, config);
+  let res = await axios.get(`https://www.thebluealliance.com/api/v3/team/frc${req.params.team}/media/${dayjs().year()}`, config);
   let src;
+  let data = res.data;
 
   if(data[1].type == "imgur"){
     let res = await axios.get(url)
