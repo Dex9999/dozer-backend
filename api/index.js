@@ -3,6 +3,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const app = express();
 const Canvas = require('@napi-rs/canvas');
+const dayjs = require('dayjs');
+const cheerio = require('cheerio');
 const { EmbedBuilder, WebhookClient } = require('discord.js');
 
 //now it'll update
@@ -68,6 +70,31 @@ async function sheetData() {
 //     res.status(500).send('Internal Server Error');
 //   }
 // });
+
+app.get('/image/:team', async (req, res) => {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    headers: { 
+      'X-TBA-Auth-Key': process.env.TBA
+    }
+  };
+  let data = await axios.get(`https://www.thebluealliance.com/api/v3/team/frc${req.params.team}/media/${dayjs().year()}`, config);
+  let src;
+
+  if(data[1].type == "imgur"){
+    let res = await axios.get(url)
+    let html = res.data;
+    let $ = cheerio.load(html);
+    src = $("#root > div > div.desktop-app.App > div > div.Spinner-contentWrapper > div > div.Gallery-MainContainer > div > div.Gallery-contentWrapper > div > div > div.Gallery-ContentWrapper > div > div > div.Gallery-Content--mediaContainer > div > div > img").attr('src');
+  }
+
+  if (teamData) {
+    res.status(200).json({link: src});
+  } else {
+    res.status(404).json({error: "Team missing image or team not found"});
+  }
+});
 
 app.post('/webhook', async (req, res) => {
   try {
