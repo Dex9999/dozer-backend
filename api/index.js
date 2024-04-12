@@ -87,7 +87,7 @@ app.get('/image/:team', async (req, res) => {
     let html = res.data;
     let $ = cheerio.load(html);
     src = $("#root > div > div.desktop-app.App > div > div.Spinner-contentWrapper > div > div.Gallery-MainContainer > div > div.Gallery-contentWrapper > div > div > div.Gallery-ContentWrapper > div > div > div.Gallery-Content--mediaContainer > div > div > img").attr('src');
-  }
+  } //
 
   if (teamData) {
     res.status(200).json({link: src});
