@@ -70,7 +70,7 @@ async function sheetData() {
 //     res.status(500).send('Internal Server Error');
 //   }
 // });
-
+/*
 app.get('/image/:team', async (req, res) => {
   let config = {
     method: 'get',
@@ -111,7 +111,7 @@ app.post('/webhook', async (req, res) => {
     console.log(err);
   }
 
-});
+});*/
 
 // get data for a specific team
 app.get('/team/:id', async (req, res) => {
